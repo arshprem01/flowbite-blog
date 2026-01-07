@@ -1,12 +1,5 @@
 <div class="max-w-7xl w-full mx-auto py-24 flex flex-col">
-  <% if Current&.user&.admin? %>
-  <div class="flex mr-auto mb-8">
-    <span class="bg-success-soft border border-success-subtle text-fg-success-strong text-xs font-medium px-1.5 py-0.5 rounded mb-auto">You Are An Admin</span>
-    <%= link_to new_admin_post_path, class: "text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5 hover:shadow-lg cursor-pointer" do %>
-      Create Blog Post
-    <% end %>
-  </div>
-  <% end %>
+
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
     <%= render partial: "post" , collection: @posts %>
 </div>

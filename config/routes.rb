@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resource :session
-  resources :posts, only: [ :index, :show ]
+  get "/auth/:provider/callback", to: "sessions/omniauth#create"
+  get "sign_up", to: "users#new"
+  post "sign_up", to: "users#create"
+  resources :posts, only: [ :index, :show, :new, :create, :destroy ] do
+    resources :comments, only: [ :create, :destroy ]
+    resources :likes, only: [ :create, :destroy ]
+  end
 
   namespace :admin do
     resources :posts, only: [ :new, :create ]

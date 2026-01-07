@@ -1,7 +1,7 @@
 <div class="bg-white block max-w-sm border border-gray-200 rounded-lg shadow-md mx-auto">
     <% if post.banner_image.attached? %>
         <a href="<%= url_for(post) %>">
-            <%= image_tag post.banner_image, class: "rounded-t-lg w-full h-48 object-cover", alt: post.title %>
+            <%= image_tag post.banner_image, class: "rounded-t-lg w-full h-48 object-cover", alt: post.title, inline: 'width="300" height="200"' %>
         </a>
     <% end %>
     <div class="p-6 text-center">

@@ -1,0 +1,25 @@
+<div class="mx-auto max-w-7xl w-full mx-auto py-24 px-4">
+    <h1 class="text-5xl text-gray-900 mb-6">New Blog Post</h1>
+    <%= form_with(model: @post, url: posts_path) do |f| %>
+        <div class="mb-4">
+            <%= f.label :title, class: "block mb-2.5 text-sm font-medium text-heading" %>
+            <%= f.text_field :title, class: "bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" %>
+        </div>
+        <div class="mb-4">
+            <%= f.label :banner_image, class: "block mb-2.5 text-sm font-medium text-heading" %>
+            <%= f.file_field :banner_image, class: "bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" %>
+        </div>
+        <div class="mb-4">
+            <%= f.label :body, class: "block mb-2.5 text-sm font-medium text-heading" %>
+            <%= f.rich_text_area :body, class: "bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body", style: "min-height: 400px;" %>
+        </div>
+
+        <div class="mb-4">
+           <button class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-heading rounded-base group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 cursor-pointer" type="submit">
+    <span class=" relative px-4 py-2.5 transition-all ease-in duration-75 bg-neutral-primary-soft rounded-base group-hover:bg-transparent group-hover:dark:bg-transparent leading-5">
+      Create Post
+    </span>
+</button>
+        </div>
+    <% end %>
+</div>
