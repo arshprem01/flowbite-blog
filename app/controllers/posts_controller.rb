@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc)
+    @posts = @posts.search(params[:query]) if params[:query].present?
+    @posts = @posts.page(params[:page]).per(6)
   end
 
   def show
