@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
+    @related_posts = Post.where.not(id: @post.id).order(created_at: :desc).limit(3)
   end
 
   def new

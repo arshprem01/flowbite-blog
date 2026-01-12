@@ -3,9 +3,11 @@ class User < ApplicationRecord
   validates :password, presence: true, on: :create, unless: -> { provider.present? }
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+    where(email_address: auth.info.email).first_or_initialize do |user|
       user.email_address = auth.info.email
-      user.password = SecureRandom.hex(10)
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.password = SecureRandom.hex(10) if user.new_record?
     end
   end
   has_many :sessions, dependent: :destroy

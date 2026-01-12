@@ -30,9 +30,9 @@
         <% if authenticated? %>
             <% like = Current.user.likes.find_by(post: @post) %>
             <% if like %>
-                <%= button_to "Unlike", post_like_path(@post, like), method: :delete, class: "px-4 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200" %>
+                <%= button_to "Unlike", post_like_path(@post, like), method: :delete, class: "px-4 py-2 bg-rose-100 text-rose-600 rounded-lg hover:bg-rose-200" %>
             <% else %>
-                <%= button_to "Like", post_likes_path(@post), method: :post, class: "px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200" %>
+                <%= button_to "Like", post_likes_path(@post), method: :post, class: "px-4 py-2 bg-violet-100 text-violet-600 rounded-lg hover:bg-violet-200" %>
             <% end %>
         <% else %>
             <p class="text-sm text-gray-500">Log in to like this post.</p>
@@ -40,9 +40,16 @@
         <span class="text-lg font-semibold text-gray-700"><%= @post.likes.count %> Likes</span>
         <% if authenticated? && @post.user == Current.user %>
             <div class="ml-auto">
-                <%= button_to "Delete Post", post_path(@post), method: :delete, class: "px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700", data: { turbo_confirm: "Are you sure you want to delete this post?" } %>
+                <%= button_to "Delete Post", post_path(@post), method: :delete, class: "px-4 py-2 bg-rose-600 text-white rounded-lg hover:bg-rose-700", data: { turbo_confirm: "Are you sure you want to delete this post?" } %>
             </div>
         <% end %>
+    </div>
+
+    <div class="mt-12 px-4 lg:px-0">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Read Next</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <%= render partial: "post", collection: @related_posts %>
+        </div>
     </div>
 
     <div class="mt-12 px-4 lg:px-0">
@@ -51,7 +58,7 @@
         <% if authenticated? %>
             <%= render "comments/form", post: @post %>
         <% else %>
-            <p class="text-gray-600 mb-8">Please <%= link_to "log in", new_session_path, class: "text-blue-600 hover:underline" %> to leave a comment.</p>
+            <p class="text-gray-600 mb-8">Please <%= link_to "log in", new_session_path, class: "text-violet-600 hover:underline" %> to leave a comment.</p>
         <% end %>
 
         <div class="mt-8">
