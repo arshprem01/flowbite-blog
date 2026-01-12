@@ -35,6 +35,8 @@ This README explains how to get the project running locally, test it, build a Do
 - **Dockerfile** for containerized builds
 - **Kamal** support for deployment
 - **Sitemap generation and friendly URLs** (friendly_id & sitemap_generator)
+- **Responsive Mobile Design**: Optimized layout for all devices.
+- **Related Posts**: Shows "Read Next" suggestions based on title similarity.
 
 ## Technology stack
 - Ruby 3.4.7

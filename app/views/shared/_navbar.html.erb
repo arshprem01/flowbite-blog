@@ -3,7 +3,7 @@
         <a href="<%= root_path %>" class="flex items-center">
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Just Blogs</span>
         </a>
-        <div class="flex-1 max-w-lg mx-4 block">
+        <div class="w-full lg:w-auto lg:flex-1 lg:max-w-lg lg:mx-4 mt-3 lg:mt-0 order-last lg:order-none block">
             <%= form_with url: posts_path, method: :get, local: true, class: "flex items-center" do |f| %>
                 <label for="simple-search" class="sr-only">Search</label>
                 <div class="relative w-full">

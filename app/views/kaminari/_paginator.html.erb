@@ -10,7 +10,8 @@
         <% end -%>
       <% end -%>
       <%= next_page_tag unless current_page.last? %>
-    <form class="mx-auto" action="<%= url_for(params.permit!.to_h.merge(page: nil)) %>" method="get">
+    </ul>
+    <form class="" action="<%= url_for(request.query_parameters.merge(page: nil)) %>" method="get">
       <div class="flex items-center space-x-2">
           <label for="visitors" class="text-sm font-medium text-body shrink-0">Go to</label>
           <input type="number" name="page" id="visitors" class="bg-neutral-secondary-medium w-10 border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block px-2.5 py-2 shadow-xs placeholder:text-body" placeholder="<%= current_page %>" required min="1" max="<%= total_pages %>" />

@@ -9,7 +9,17 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.friendly.find(params[:id])
-    @related_posts = Post.where.not(id: @post.id).order(created_at: :desc).limit(3)
+
+    related = Post.related_to(@post).limit(3)
+    @related_posts = related.to_a
+
+    if @related_posts.count < 3
+      needed = 3 - @related_posts.count
+      fallback = Post.where.not(id: [ @post.id ] + @related_posts.map(&:id))
+                     .order(created_at: :desc)
+                     .limit(needed)
+      @related_posts += fallback
+    end
   end
 
   def new
