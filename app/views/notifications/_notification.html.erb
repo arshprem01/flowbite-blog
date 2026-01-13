@@ -1,0 +1,37 @@
+<div class="p-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+  <div class="flex items-center space-x-3">
+    <div class="flex-shrink-0">
+      <%# Placeholder avatar or actor's avatar if available %>
+      <div class="w-8 h-8 rounded-full bg-violet-500 flex items-center justify-center text-white text-xs font-bold">
+        <%= notification.actor.email_address[0].upcase %>
+      </div>
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="text-sm font-medium text-gray-900 dark:text-white">
+        <%= notification.actor.email_address %>
+        <% if notification.notifiable %>
+          <% case notification.action %>
+          <% when "posted" %>
+            posted a new article: <%= link_to notification.notifiable.title, post_path(notification.notifiable), class: "text-violet-600 hover:underline" %>
+          <% when "liked" %>
+            liked your post: <%= link_to notification.notifiable.post.title, post_path(notification.notifiable.post), class: "text-violet-600 hover:underline" %>
+          <% when "commented" %>
+            commented on your post: <%= link_to notification.notifiable.post.title, post_path(notification.notifiable.post), class: "text-violet-600 hover:underline" %>
+          <% end %>
+        <% else %>
+          <span class="text-gray-500 italic">
+            (content deleted)
+          </span>
+        <% end %>
+      </p>
+      <p class="text-xs text-gray-500 dark:text-gray-400">
+        <%= time_ago_in_words(notification.created_at) %> ago
+      </p>
+    </div>
+    <% unless notification.read_at %>
+      <div class="inline-flex items-center text-xs font-medium text-violet-600 dark:text-violet-500">
+        New
+      </div>
+    <% end %>
+  </div>
+</div>

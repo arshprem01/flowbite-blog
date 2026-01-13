@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications, only: [ :index ]
   resource :session
   get "/auth/:provider/callback", to: "sessions/omniauth#create"
   get "sign_up", to: "users#new"
